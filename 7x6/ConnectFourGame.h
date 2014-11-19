@@ -7,7 +7,17 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "Board.h"
 
 @interface ConnectFourGame : NSObject
 
+/*
+ LEGEND
+ 0: empty space
+ 1: player 1 piece(red)
+ 2: player 2 piece(black)
+ */
+@property Board *board;
+
 @end
+

@@ -20,4 +20,21 @@
     return grid[row][col];
 }
 
+-(instancetype) initWithZeroes
+{
+    self = [super init];
+    if(self)
+    {
+        for(int i = 0; i < ROWCOUNT; i++)
+        {
+            for(int j = 0; j < COLCOUNT; j++)
+            {
+                grid[i][j] = 0;
+            }
+        }
+    }
+    
+    return self;
+}
+
 @end
