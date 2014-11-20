@@ -56,11 +56,100 @@
  1: red piece wins (player 1)
  2: black piece wins (player 2)
  */
--(int)checkForWinAtColumn:(int)col
+-(int)checkForWinAtColumn:(int)column
 {
     int result = 0;
     
-    //TODO CHECKS HERE
+    int row = [self findHighestRow:column];
+    int player = grid[row][column];
+    
+    
+    if(row >= 0 && row <= 2)
+    {
+        if([self checkSouthAtRow:row atColumn:column])
+            result = player;
+        
+        if(column >= 0 && column <= 3)
+        {
+            if([self checkSouthEastAtRow:row atColumn:column])
+                result = player;
+            if([self checkEastAtRow:row atColumn:column])
+                result = player;
+        }
+        if(column >= 3 && column <= 6)
+        {
+            if([self checkSouthWestAtRow:row atColumn:column])
+                result = player;
+            if([self checkWestAtRow:row atColumn:column])
+                result = player;
+        }
+        if(column >= 1 && column <= 4)
+        {
+            if([self checkMidEastAtRow:row atColumn:column])
+                result = player;
+        }
+        if(column >= 2 && column <= 5)
+        {
+            if([self checkMidWestAtRow:row atColumn:column])
+                result = player;
+        }
+    }
+    
+    if(row >= 3 && row <= 5)
+    {
+        if(column >= 0 && column <= 3)
+        {
+            if([self checkNorthEastAtRow:row atColumn:column])
+                result = player;
+            if([self checkEastAtRow:row atColumn:column])
+                result = player;
+        }
+        if(column >= 3 && column <= 6)
+        {
+            if([self checkNorthWestAtRow:row atColumn:column])
+                result = player;
+            if([self checkWestAtRow:row atColumn:column])
+                result = player;
+        }
+        if(column >= 1 && column <= 4)
+        {
+            if([self checkMidEastAtRow:row atColumn:column])
+                result = player;
+        }
+        if(column >= 2 && column <= 5)
+        {
+            if([self checkMidWestAtRow:row atColumn:column])
+                result = player;
+        }
+    }
+    
+    if(row >= 1 && row <= 3)
+    {
+        if(column >= 1 && column <= 4)
+        {
+            if([self checkMidSouthEastAtRow:row atColumn:column])
+                result = player;
+        }
+        if(column >= 2 && column <= 5)
+        {
+            if([self checkMidSouthWestAtRow:row atColumn:column])
+                result = player;
+        }
+    }
+    
+    if(row >= 2 && row <= 4)
+    {
+        if(column >= 1 && column <= 4)
+        {
+            if([self checkMidNorthEastAtRow:row atColumn:column])
+                result = player;
+        }
+        if(column >= 2 && column <= 5)
+        {
+            if([self checkMidNorthWestAtRow:row atColumn:column])
+                result = player;
+        }
+    }
     
     return result;
 }
