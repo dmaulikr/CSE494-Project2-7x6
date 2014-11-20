@@ -15,7 +15,6 @@
     self = [super init];
     if(self)
     {
-        //self.board = [[Board alloc] initWithZeroes];
         self.currentPlayer = 1;
         
         for(int r = 0; r < ROWCOUNT; r++)

@@ -22,7 +22,6 @@
 {
     int grid[ROWCOUNT][COLCOUNT];
 }
-@property Board *board;
 @property int currentPlayer;
 
 -(instancetype)initGame;
