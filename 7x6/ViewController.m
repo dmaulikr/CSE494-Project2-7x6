@@ -10,6 +10,7 @@
 #import "BoardView.h"
 #import "ConnectFourAI.h"
 #import "Score.h"
+#import <Parse/Parse.h>
 
 @interface ViewController ()
 
@@ -192,15 +193,15 @@ bool processingMove;
     int winner = [self.game checkForWinAtColumn:column];
     if(winner == 1)
     {
-        [self endGameActionsWith:@"You Win!"];
+        [self endGameActionsWith:@"You Win!" AndWinner:1];
     }
     else if(winner == 2)
     {
-        [self endGameActionsWith:@"You Lose!"];
+        [self endGameActionsWith:@"You Lose!" AndWinner:2];
     }
     else if(winner == 3)
     {
-        [self endGameActionsWith:@"It's a tie!"];
+        [self endGameActionsWith:@"It's a tie!" AndWinner:3];
     }
     else
     {
@@ -208,8 +209,25 @@ bool processingMove;
     }
 }
 
--(void)endGameActionsWith:(NSString *)result
+-(void)endGameActionsWith:(NSString *)result AndWinner:(int)winner
 {
+    
+    PFUser *user = [PFUser currentUser];
+    if(winner == 1)
+    {
+        user[@"wins"] = @((int) user[@"wins"] + 1);
+        [self.userScore addWinBonus];
+        self.scoreLabel.text = [self.userScore getScore];
+    }
+    else if(winner == 2)
+    {
+        user[@"losses"] = @((int) user[@"losses"] + 1);
+        [self.userScore addLossPenalty];
+        self.scoreLabel.text = [self.userScore getScore];
+    }
+    user[@"highscore"] = @(self.userScore.score);
+
+    
     UIAlertController * view=   [UIAlertController
                                  alertControllerWithTitle:result
                                  message:@"Would you like to submit your score?"
@@ -220,6 +238,11 @@ bool processingMove;
                          style:UIAlertActionStyleDefault
                          handler:^(UIAlertAction * action)
                          {
+                             PFObject *highScoreTable = [PFObject objectWithClassName:@"HighScores"];
+                             highScoreTable[@"username"] = user[@"username"];
+                             highScoreTable[@"score"] = @(self.userScore.score);
+                             [highScoreTable saveInBackground];
+                             
                              [view dismissViewControllerAnimated:YES completion:nil];
                              UIAlertController * alert=   [UIAlertController
                                                            alertControllerWithTitle:@"Success!"

@@ -17,6 +17,8 @@
 -(void)applyTurnPenalty;
 -(void)stampTurnStart;
 -(void)applyTimePenalty;
+-(void)addLossPenalty;
+-(void)addWinBonus;
 -(NSString*)getScore;
 
 

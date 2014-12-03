@@ -52,4 +52,18 @@
     return [NSString stringWithFormat:@"%d", self.score];
 }
 
+-(void)addWinBonus
+{
+    self.score += 5000;
+}
+
+-(void)addLossPenalty
+{
+    self.score /= 10000/(10000-self.score);
+    if(self.score < 0)
+    {
+        self.score = 0;
+    }
+}
+
 @end
