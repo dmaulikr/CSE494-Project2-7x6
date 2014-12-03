@@ -10,7 +10,7 @@
 #import <math.h>
 #import <limits.h>
 
-#define MAX_DEPTH 8
+#define MAX_DEPTH 10
 #define WIN_REVENUE 1
 #define LOSE_REVENUE -1
 #define UNCERTAIN_REVENUE 0

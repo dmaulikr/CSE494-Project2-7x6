@@ -110,8 +110,9 @@ bool processingMove;
             [self checkForWinAt:columnTouched];
         
             
-            [NSTimer scheduledTimerWithTimeInterval:2
+            [NSTimer scheduledTimerWithTimeInterval:1
                                             target:self
+                                           selector:@selector(aiTurn)
                                             userInfo:nil
                                             repeats:NO];
         
@@ -119,25 +120,6 @@ bool processingMove;
          
             //Game logic for AI player
         
-            if(self.game.currentPlayer == 1)
-            {
-                currentColor = [UIColor redColor];
-                self.thinkingLabel.hidden = NO;
-                //[self.view setNeedsDisplay];
-            }
-            else
-            {
-                currentColor = [UIColor blackColor];
-                self.thinkingLabel.hidden = YES;
-                // [self.view setNeedsDisplay];
-            }
-            
-            columnTouched = [self.ai makeTurn];
-            [self.game placeCurrentPlayerPieceAtColumn:columnTouched];
-            //update UI
-            [self.gameView updatePieceColorAt:[self.game findHighestRow:columnTouched] And:columnTouched With:currentColor];
-            [self.gameView setNeedsDisplay];
-            [self checkForWinAt:columnTouched];
         }
         else
         {
@@ -148,6 +130,31 @@ bool processingMove;
     
     processingMove = false;
 
+}
+
+-(void)aiTurn
+{
+    UIColor *currentColor;
+    int columnTouched;
+    if(self.game.currentPlayer == 1)
+    {
+        currentColor = [UIColor redColor];
+        self.thinkingLabel.hidden = NO;
+        //[self.view setNeedsDisplay];
+    }
+    else
+    {
+        currentColor = [UIColor blackColor];
+        self.thinkingLabel.hidden = YES;
+        // [self.view setNeedsDisplay];
+    }
+    
+    columnTouched = [self.ai makeTurn];
+    [self.game placeCurrentPlayerPieceAtColumn:columnTouched];
+    //update UI
+    [self.gameView updatePieceColorAt:[self.game findHighestRow:columnTouched] And:columnTouched With:currentColor];
+    [self.gameView setNeedsDisplay];
+    [self checkForWinAt:columnTouched];
 }
 
 -(void)invalidMoveAlert
