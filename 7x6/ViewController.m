@@ -69,8 +69,6 @@ bool processingMove;
     
     if(!processingMove){
         
-        //THE USER'S MOVE
-        
         processingMove = true;
         
         //Get where the user touched the screen
@@ -101,40 +99,74 @@ bool processingMove;
            // [self.view setNeedsDisplay];
         }
         
-        //Game logic
-        if(self.game.currentPlayer == 1)
-        {
+        //Game logic for user player
+        if([self.game isValidMoveAtColumn:columnTouched]){
             [self.game placeCurrentPlayerPieceAtColumn:columnTouched];
-        }
-        else
-        {
+            //update UI
+            [self.gameView updatePieceColorAt:[self.game findHighestRow:columnTouched] And:columnTouched With:currentColor];
+            [self.gameView setNeedsDisplay];
+            [self checkForWinAt:columnTouched];
+        
+        
+            //AI MAKES ITS MOVE
+         
+            //Game logic for AI player
+        
             columnTouched = [self.ai makeTurn];
             [self.game placeCurrentPlayerPieceAtColumn:columnTouched];
-        }
-        //update UI
-        [self.gameView updatePieceColorAt:[self.game findHighestRow:columnTouched] And:columnTouched With:currentColor];
-        [self.gameView setNeedsDisplay];
-        
-        
-        
-        
-        int winner = [self.game checkForWinAtColumn:columnTouched];
-        if(winner == 1)
-        {
-            [self endGameActionsWith:@"You Win!"];
-        }
-        else if(winner == 2)
-        {
-            [self endGameActionsWith:@"You Lose!"];
+            //update UI
+            [self.gameView updatePieceColorAt:[self.game findHighestRow:columnTouched] And:columnTouched With:currentColor];
+            [self.gameView setNeedsDisplay];
+            [self checkForWinAt:columnTouched];
         }
         else
         {
-            [self.game nextTurnPreparation];
+            [self invalidMoveAlert];
         }
+        
     }
     
     processingMove = false;
 
+}
+
+-(void)invalidMoveAlert
+{
+    UIAlertController * alert=   [UIAlertController
+                                  alertControllerWithTitle:@"Invalid Move!"
+                                  message:@"You cannot place a piece here. Please try again."
+                                  preferredStyle:UIAlertControllerStyleAlert];
+    
+    UIAlertAction* ok = [UIAlertAction
+                         actionWithTitle:@"OK"
+                         style:UIAlertActionStyleDefault
+                         handler:^(UIAlertAction * action)
+                         {
+                             [alert dismissViewControllerAnimated:YES completion:nil];
+                             
+                         }];
+    
+    
+    [alert addAction:ok];
+    
+    [self presentViewController:alert animated:YES completion:nil];
+}
+
+-(void)checkForWinAt:(int)column
+{
+    int winner = [self.game checkForWinAtColumn:column];
+    if(winner == 1)
+    {
+        [self endGameActionsWith:@"You Win!"];
+    }
+    else if(winner == 2)
+    {
+        [self endGameActionsWith:@"You Lose!"];
+    }
+    else
+    {
+        [self.game nextTurnPreparation];
+    }
 }
 
 -(void)endGameActionsWith:(NSString *)result
