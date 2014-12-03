@@ -85,28 +85,35 @@ bool processingMove;
             columnTouched = 6;
         }
         
-        UIColor *currentColor;
-        if(self.game.currentPlayer == 1)
-        {
-            currentColor = [UIColor redColor];
-            self.thinkingLabel.hidden = NO;
-            //[self.view setNeedsDisplay];
-        }
-        else
-        {
-           currentColor = [UIColor blackColor];
-           self.thinkingLabel.hidden = YES;
-           // [self.view setNeedsDisplay];
-        }
-        
         //Game logic for user player
         if([self.game isValidMoveAtColumn:columnTouched]){
+            
+            //Setup stuff
+            UIColor *currentColor;
+            if(self.game.currentPlayer == 1)
+            {
+                currentColor = [UIColor redColor];
+                self.thinkingLabel.hidden = NO;
+                //[self.view setNeedsDisplay];
+            }
+            else
+            {
+                currentColor = [UIColor blackColor];
+                self.thinkingLabel.hidden = YES;
+                // [self.view setNeedsDisplay];
+            }
+            
             [self.game placeCurrentPlayerPieceAtColumn:columnTouched];
             //update UI
             [self.gameView updatePieceColorAt:[self.game findHighestRow:columnTouched] And:columnTouched With:currentColor];
             [self.gameView setNeedsDisplay];
             [self checkForWinAt:columnTouched];
         
+            
+            [NSTimer scheduledTimerWithTimeInterval:2
+                                            target:self
+                                            userInfo:nil
+                                            repeats:NO];
         
             //AI MAKES ITS MOVE
          
