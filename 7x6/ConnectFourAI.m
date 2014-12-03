@@ -58,7 +58,7 @@
     }
     
     //[self.board makeMoveAtColumn:move withPiece:AIPIECE];
-    NSLog(@"Piece placed at column %d", move);
+    //NSLog(@"Piece placed at column %d", move);
     return move;
 }
 

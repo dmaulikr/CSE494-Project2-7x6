@@ -146,6 +146,7 @@
                     <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
                     <connections>
                         <outlet property="gameView" destination="kh9-bI-dsS" id="WqM-Dd-55D"/>
+                        <outlet property="scoreLabel" destination="Z0J-da-uqF" id="HQ0-go-d0l"/>
                         <outlet property="thinkingLabel" destination="23U-Zg-AGz" id="fzq-A8-i0T"/>
                     </connections>
                 </viewController>

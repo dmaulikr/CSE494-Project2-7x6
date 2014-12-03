@@ -9,14 +9,17 @@
 #import "ViewController.h"
 #import "BoardView.h"
 #import "ConnectFourAI.h"
+#import "Score.h"
 
 @interface ViewController ()
 
 @property (strong, nonatomic) IBOutlet BoardView *gameView;
 @property (weak, nonatomic) IBOutlet UILabel *thinkingLabel;
-
+@property (weak, nonatomic) IBOutlet UILabel *scoreLabel;
 
 @property ConnectFourAI *ai;
+@property Score *userScore;
+
 @end
 
 @implementation ViewController
@@ -27,6 +30,9 @@ bool processingMove;
     [super viewDidLoad];
     self.game = [[ConnectFourGame alloc] initGame];
     self.ai = [[ConnectFourAI alloc] initWithBoardPointer:self.game];
+    self.userScore = [[Score alloc] init];
+    self.scoreLabel.text = [self.userScore getScore];
+    [self.userScore stampTurnStart];
     processingMove = false;
 }
 
@@ -104,21 +110,22 @@ bool processingMove;
             }
             
             [self.game placeCurrentPlayerPieceAtColumn:columnTouched];
+            
+            //Update score
+            [self.userScore applyTimePenalty];
+            [self.userScore applyTurnPenalty];
+            self.scoreLabel.text = [self.userScore getScore];
+            
             //update UI
             [self.gameView updatePieceColorAt:[self.game findHighestRow:columnTouched] And:columnTouched With:currentColor];
             [self.gameView setNeedsDisplay];
             [self checkForWinAt:columnTouched];
-        
             
             [NSTimer scheduledTimerWithTimeInterval:1
                                             target:self
                                            selector:@selector(aiTurn)
                                             userInfo:nil
                                             repeats:NO];
-        
-            //AI MAKES ITS MOVE
-         
-            //Game logic for AI player
         
         }
         else
@@ -155,6 +162,7 @@ bool processingMove;
     [self.gameView updatePieceColorAt:[self.game findHighestRow:columnTouched] And:columnTouched With:currentColor];
     [self.gameView setNeedsDisplay];
     [self checkForWinAt:columnTouched];
+    [self.userScore stampTurnStart];
 }
 
 -(void)invalidMoveAlert
