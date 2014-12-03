@@ -18,7 +18,7 @@
         NSString *s = @"";
         for(int j = 0; j < COLCOUNT; j++)
         {
-            s = [NSString stringWithFormat:@"%@ %d", s, grid[i][j]s ];
+            s = [NSString stringWithFormat:@"%@ %d", s, grid[i][j] ];
         }
         NSLog(@"%@", s);
     }
