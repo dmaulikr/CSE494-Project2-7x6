@@ -122,14 +122,10 @@
 // Sent to the delegate when a PFUser is signed up.
 - (void)signUpViewController:(PFSignUpViewController *)signUpController didSignUpUser:(PFUser *)user {
     //Sign up user with highScore of 0
-    
-    [user setObject:0 forKey:@"wins"];
-    [user setObject:0 forKey:@"losses"];
-    [user setObject:0 forKey:@"highestscore"];
-    
-    //user[@"wins"] = 0;
-    //user[@"losses"] = 0;
-    //user[@"highestscore"] = 0;
+
+    user[@"wins"] = @(0);
+    user[@"losses"] = @(0);
+    user[@"highestscore"] = @(0);
     [user save];
     
     [self dismissViewControllerAnimated:YES completion:Nil]; // Dismiss the PFSignUpViewController
