@@ -20,8 +20,6 @@
 		8C3204FD1A16FBFA00273401 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8C3204FC1A16FBFA00273401 /* Images.xcassets */; };
 		8C3205001A16FBFA00273401 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8C3204FE1A16FBFA00273401 /* LaunchScreen.xib */; };
 		8C32050C1A16FBFA00273401 /* _x6Tests.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C32050B1A16FBFA00273401 /* _x6Tests.m */; };
-		8C9D37451A2FC265009137A4 /* Bolts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8C9D37431A2FC265009137A4 /* Bolts.framework */; };
-		8C9D37461A2FC265009137A4 /* Parse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8C9D37441A2FC265009137A4 /* Parse.framework */; };
 		8CE36F311A2F9D26006650F5 /* ConnectFourAI.m in Sources */ = {isa = PBXBuildFile; fileRef = 8CE36F301A2F9D26006650F5 /* ConnectFourAI.m */; };
 /* End PBXBuildFile section */
 
@@ -60,8 +58,6 @@
 		8C3205051A16FBFA00273401 /* 7x6Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = 7x6Tests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		8C32050A1A16FBFA00273401 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8C32050B1A16FBFA00273401 /* _x6Tests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = _x6Tests.m; sourceTree = "<group>"; };
-		8C9D37431A2FC265009137A4 /* Bolts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Bolts.framework; sourceTree = "<group>"; };
-		8C9D37441A2FC265009137A4 /* Parse.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Parse.framework; sourceTree = "<group>"; };
 		8CE36F2F1A2F9D26006650F5 /* ConnectFourAI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ConnectFourAI.h; sourceTree = "<group>"; };
 		8CE36F301A2F9D26006650F5 /* ConnectFourAI.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ConnectFourAI.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -71,8 +67,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8C9D37461A2FC265009137A4 /* Parse.framework in Frameworks */,
-				8C9D37451A2FC265009137A4 /* Bolts.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -89,8 +83,6 @@
 		8C3204E31A16FBFA00273401 = {
 			isa = PBXGroup;
 			children = (
-				8C9D37431A2FC265009137A4 /* Bolts.framework */,
-				8C9D37441A2FC265009137A4 /* Parse.framework */,
 				8C3204EE1A16FBFA00273401 /* 7x6 */,
 				8C3205081A16FBFA00273401 /* 7x6Tests */,
 				8C3204ED1A16FBFA00273401 /* Products */,
@@ -391,10 +383,6 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(PROJECT_DIR)",
-				);
 				INFOPLIST_FILE = 7x6/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -405,10 +393,6 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(PROJECT_DIR)",
-				);
 				INFOPLIST_FILE = 7x6/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
