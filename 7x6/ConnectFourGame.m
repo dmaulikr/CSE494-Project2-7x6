@@ -10,8 +10,21 @@
 
 @implementation ConnectFourGame
 
-
-/*CONNECT FOUR GAME PROCEDURE
+-(void)outputBoard
+{
+    NSLog(@"--------------------------------------------------");
+    for(int i = 0; i < ROWCOUNT; i++)
+    {
+        NSString *s = @"";
+        for(int j = 0; j < COLCOUNT; j++)
+        {
+            s = [NSString stringWithFormat:@"%@ %d", s, grid[i][j]s ];
+        }
+        NSLog(@"%@", s);
+    }
+    NSLog(@"--------------------------------------------------");
+    
+}/*CONNECT FOUR GAME PROCEDURE
 
  
 initialize object

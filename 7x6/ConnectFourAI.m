@@ -36,7 +36,7 @@
 -(int)makeTurn
 {
     
-    double maxValue = 2 * INT_MIN;
+    double maxValue = 2. * INT_MIN;
     int move = 0;
     
     for(int column = 0; column < COLCOUNT; column++)
@@ -58,7 +58,7 @@
     }
     
     //[self.board makeMoveAtColumn:move withPiece:AIPIECE];
-    //NSLog(@"Piece placed at column %d", move);
+    NSLog(@"Piece placed at column %d", move);
     return move;
 }
 
@@ -94,7 +94,7 @@
             score = UNCERTAIN_REVENUE;
         }
         
-        return score / (MAX_DEPTH - depth + 1);
+        return (score / (MAX_DEPTH - depth + 1));
     }
     
     if(maximizingPlayer)
