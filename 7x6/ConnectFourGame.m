@@ -154,6 +154,7 @@ game loop
  0: no winner yet
  1: red piece wins (player 1)
  2: black piece wins (player 2)
+ 3: tie game
  */
 -(int)checkForWinAtColumn:(int)column
 {
@@ -250,7 +251,28 @@ game loop
         }
     }
     
+    if(result == 0 && [self isBoardFull])
+    {
+        return 3;
+    }
+    
     return result;
+}
+
+-(BOOL)isBoardFull
+{
+    BOOL full = true;
+    
+    for(int col = 0; col < COLCOUNT; col++)
+    {
+        if(grid[0][col] == 0)
+        {
+            full = false;
+            break;
+        }
+    }
+    
+    return full;
 }
 
 //used to find the highest row that is occupied in connect four board
