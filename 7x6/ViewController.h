@@ -7,9 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "ConnectFourGame.h"
 
 @interface ViewController : UIViewController
 
+@property ConnectFourGame *game;
 
 @end
 

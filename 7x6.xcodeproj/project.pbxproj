@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		39A3342E1A26622D00070CF7 /* BoardView.m in Sources */ = {isa = PBXBuildFile; fileRef = 39A3342D1A26622D00070CF7 /* BoardView.m */; };
 		8C1DD3E81A1D16AE00B4B14D /* ConnectFourGame.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C1DD3E71A1D16AE00B4B14D /* ConnectFourGame.m */; };
 		8C1DD3EB1A1D1A1800B4B14D /* Board.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C1DD3EA1A1D1A1800B4B14D /* Board.m */; };
 		8C3204F21A16FBFA00273401 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C3204F11A16FBFA00273401 /* main.m */; };
@@ -29,6 +30,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		39A3342C1A26622D00070CF7 /* BoardView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BoardView.h; sourceTree = "<group>"; };
+		39A3342D1A26622D00070CF7 /* BoardView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BoardView.m; sourceTree = "<group>"; };
 		8C1DD3E61A1D16AE00B4B14D /* ConnectFourGame.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ConnectFourGame.h; sourceTree = "<group>"; };
 		8C1DD3E71A1D16AE00B4B14D /* ConnectFourGame.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ConnectFourGame.m; sourceTree = "<group>"; };
 		8C1DD3E91A1D1A1800B4B14D /* Board.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Board.h; sourceTree = "<group>"; };
@@ -92,6 +95,8 @@
 				8C3204F61A16FBFA00273401 /* ViewController.h */,
 				8C3204F71A16FBFA00273401 /* ViewController.m */,
 				8C3204F91A16FBFA00273401 /* Main.storyboard */,
+				39A3342C1A26622D00070CF7 /* BoardView.h */,
+				39A3342D1A26622D00070CF7 /* BoardView.m */,
 				8C3204FC1A16FBFA00273401 /* Images.xcassets */,
 				8C3204FE1A16FBFA00273401 /* LaunchScreen.xib */,
 				8C3204EF1A16FBFA00273401 /* Supporting Files */,
@@ -234,6 +239,7 @@
 				8C3204F51A16FBFA00273401 /* AppDelegate.m in Sources */,
 				8C3204F21A16FBFA00273401 /* main.m in Sources */,
 				8C1DD3EB1A1D1A1800B4B14D /* Board.m in Sources */,
+				39A3342E1A26622D00070CF7 /* BoardView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
