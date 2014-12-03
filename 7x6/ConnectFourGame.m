@@ -10,6 +10,19 @@
 
 @implementation ConnectFourGame
 
+
+/*CONNECT FOUR GAME PROCEDURE
+
+ 
+initialize object
+game loop
+ {
+    place piece at column
+    check for win
+    next turn preparation
+ }
+ 
+*/
 -(instancetype) initGame
 {
     self = [super init];
