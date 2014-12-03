@@ -163,6 +163,10 @@ bool processingMove;
     {
         [self endGameActionsWith:@"You Lose!"];
     }
+    else if(winner == 3)
+    {
+        [self endGameActionsWith:@"It's a tie!"];
+    }
     else
     {
         [self.game nextTurnPreparation];
