@@ -22,6 +22,7 @@
 {
     int grid[ROWCOUNT][COLCOUNT];
 }
+
 @property int currentPlayer;
 
 -(instancetype)initGame;
@@ -29,6 +30,14 @@
 -(void)placeCurrentPlayerPieceAtColumn:(int)col;
 
 -(void) nextTurnPreparation;
+
+-(int)findHighestRow:(int)column;
+
+-(BOOL)makeMoveAtColumn:(int)col withPiece:(int)piece;
+-(BOOL)undoMoveAtColumn:(int)col;
+-(BOOL)isValidMoveAtColumn:(int)col;
+-(BOOL)hasWinner;
+-(int)getWinner;
 
 
 /*

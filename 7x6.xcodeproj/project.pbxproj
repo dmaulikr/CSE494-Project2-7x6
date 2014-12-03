@@ -17,6 +17,7 @@
 		8C3204FD1A16FBFA00273401 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8C3204FC1A16FBFA00273401 /* Images.xcassets */; };
 		8C3205001A16FBFA00273401 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8C3204FE1A16FBFA00273401 /* LaunchScreen.xib */; };
 		8C32050C1A16FBFA00273401 /* _x6Tests.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C32050B1A16FBFA00273401 /* _x6Tests.m */; };
+		8CE36F311A2F9D26006650F5 /* ConnectFourAI.m in Sources */ = {isa = PBXBuildFile; fileRef = 8CE36F301A2F9D26006650F5 /* ConnectFourAI.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -49,6 +50,8 @@
 		8C3205051A16FBFA00273401 /* 7x6Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = 7x6Tests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		8C32050A1A16FBFA00273401 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8C32050B1A16FBFA00273401 /* _x6Tests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = _x6Tests.m; sourceTree = "<group>"; };
+		8CE36F2F1A2F9D26006650F5 /* ConnectFourAI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ConnectFourAI.h; sourceTree = "<group>"; };
+		8CE36F301A2F9D26006650F5 /* ConnectFourAI.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ConnectFourAI.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -107,6 +110,8 @@
 		8C3204EF1A16FBFA00273401 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				8CE36F2F1A2F9D26006650F5 /* ConnectFourAI.h */,
+				8CE36F301A2F9D26006650F5 /* ConnectFourAI.m */,
 				8C3204F01A16FBFA00273401 /* Info.plist */,
 				8C3204F11A16FBFA00273401 /* main.m */,
 				8C1DD3E61A1D16AE00B4B14D /* ConnectFourGame.h */,
@@ -240,6 +245,7 @@
 				8C3204F21A16FBFA00273401 /* main.m in Sources */,
 				8C1DD3EB1A1D1A1800B4B14D /* Board.m in Sources */,
 				39A3342E1A26622D00070CF7 /* BoardView.m in Sources */,
+				8CE36F311A2F9D26006650F5 /* ConnectFourAI.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

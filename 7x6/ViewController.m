@@ -8,12 +8,15 @@
 
 #import "ViewController.h"
 #import "BoardView.h"
+#import "ConnectFourAI.h"
 
 @interface ViewController ()
 
 @property (strong, nonatomic) IBOutlet BoardView *gameView;
+@property (weak, nonatomic) IBOutlet UILabel *thinkingLabel;
 
-@property (strong, nonatomic) IBOutlet BoardView *thinkingLabel;
+
+@property ConnectFourAI *ai;
 @end
 
 @implementation ViewController
@@ -23,6 +26,7 @@ bool processingMove;
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.game = [[ConnectFourGame alloc] initGame];
+    self.ai = [[ConnectFourAI alloc] initWithBoardPointer:self.game];
     processingMove = false;
 }
 
@@ -61,7 +65,7 @@ bool processingMove;
 //Game stuff happens here
 -(void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
 {
-    int currentPlayer = [self.game currentPlayer];
+    //int currentPlayer = [self.game currentPlayer];
     
     if(!processingMove){
         
@@ -84,57 +88,37 @@ bool processingMove;
         }
         
         UIColor *currentColor;
-        if(currentPlayer == 1)
+        if(self.game.currentPlayer == 1)
         {
             currentColor = [UIColor redColor];
-            self.thinkingLabel.hidden = YES;
+            self.thinkingLabel.hidden = NO;
+            //[self.view setNeedsDisplay];
         }
         else
         {
-            currentColor = [UIColor blackColor];
-            self.thinkingLabel.hidden = NO;
+           currentColor = [UIColor blackColor];
+           self.thinkingLabel.hidden = YES;
+           // [self.view setNeedsDisplay];
         }
         
         //Game logic
-        [self.game placeCurrentPlayerPieceAtColumn:columnTouched];
-        
+        if(self.game.currentPlayer == 1)
+        {
+            [self.game placeCurrentPlayerPieceAtColumn:columnTouched];
+        }
+        else
+        {
+            columnTouched = [self.ai makeTurn];
+            [self.game placeCurrentPlayerPieceAtColumn:columnTouched];
+        }
+        //update UI
         [self.gameView updatePieceColorAt:[self.game findHighestRow:columnTouched] And:columnTouched With:currentColor];
         [self.gameView setNeedsDisplay];
-        self.thinkingLabel.hidden = YES;
+        
+        
+        
+        
         int winner = [self.game checkForWinAtColumn:columnTouched];
-        if(winner == 1)
-        {
-            [self endGameActionsWith:@"You Win!"];
-        }
-        else if(winner == 2)
-        {
-            [self endGameActionsWith:@"You Lose!"];
-        }
-        else
-        {
-            [self.game nextTurnPreparation];
-        }
-        
-        //THE AI'S MOVE
-        //columnTouched = [self.game makeTurn];
-        if(currentPlayer == 1)
-        {
-            currentColor = [UIColor redColor];
-            self.thinkingLabel.hidden = YES;
-        }
-        else
-        {
-            currentColor = [UIColor blackColor];
-            self.thinkingLabel.hidden = NO;
-        }
-        
-        //Game logic
-        [self.game placeCurrentPlayerPieceAtColumn:columnTouched];
-        
-        [self.gameView updatePieceColorAt:[self.game findHighestRow:columnTouched] And:columnTouched With:currentColor];
-        [self.gameView setNeedsDisplay];
-        self.thinkingLabel.hidden = YES;
-        winner = [self.game checkForWinAtColumn:columnTouched];
         if(winner == 1)
         {
             [self endGameActionsWith:@"You Win!"];

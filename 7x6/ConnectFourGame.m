@@ -58,6 +58,79 @@ game loop
     }
 }
 
+
+//functions for minimax AI
+-(BOOL)makeMoveAtColumn:(int)col withPiece:(int)piece
+{
+    int row = ROWCOUNT - 1;
+    while(row >= 0)
+    {
+        if(grid[row][col] == 0)
+        {
+            grid[row][col] = piece;
+            //NSLog(@"Piece placed at column %d", col);
+            return true;
+        }
+        else
+        {
+            row--;
+        }
+    }
+    
+    return false;
+}
+
+-(BOOL)isValidMoveAtColumn:(int)col
+{
+    if( grid[0][col] != 0)
+    {
+        return false;
+    }
+    else
+    {
+        return true;
+    }
+}
+
+-(BOOL)undoMoveAtColumn:(int)col
+{
+    int row = [self findHighestRow:col];
+    grid[row][col] = 0;
+    //NSLog(@"Piece removed at column %d", col);
+    return true;
+}
+
+-(BOOL)hasWinner
+{
+    for(int i = 0; i < COLCOUNT; i++)
+    {
+        if( [self checkForWinAtColumn:i] != 0)
+        {
+            return true;
+        }
+    }
+    
+    return false;
+}
+
+-(int)getWinner
+{
+    for(int i = 0; i < COLCOUNT; i++)
+    {
+        if( [self checkForWinAtColumn:i] != 0)
+        {
+            return [self checkForWinAtColumn:i];
+        }
+    }
+    
+    return 0;
+}
+
+
+//END functions for minimax AI
+
+
+//preparation for next turn
 -(void)nextTurnPreparation
 {
     self.currentPlayer = (self.currentPlayer == 1) ? 2 : 1;
