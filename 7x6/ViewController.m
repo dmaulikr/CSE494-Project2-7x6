@@ -246,12 +246,13 @@ bool processingMove;
     
     //Store their new win loss ratio
     NSString *winsString = user[@"wins"];
-    int wins = winsString.intValue;
+    double wins = winsString.intValue;
     NSString *lossesString = user[@"losses"];
-    int losses = lossesString.intValue;
+    double losses = lossesString.intValue;
     
-    int ratio = wins/(wins+losses)*100;
+    int ratio = (wins/(wins+losses)*100.0);
     user[@"ratio"] = @(ratio);
+    NSLog(@"ratio: %f", ratio);
     
     //Save
     [user saveInBackground];
