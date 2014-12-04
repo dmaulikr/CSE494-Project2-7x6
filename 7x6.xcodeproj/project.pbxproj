@@ -40,6 +40,7 @@
 		8C331CE01A2FCB4F00EA6345 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8C331CDE1A2FCB4F00EA6345 /* Foundation.framework */; };
 		8C331CE11A2FCB4F00EA6345 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8C331CDF1A2FCB4F00EA6345 /* UIKit.framework */; };
 		8C331CE31A2FCB8E00EA6345 /* Social.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8C331CE21A2FCB8E00EA6345 /* Social.framework */; };
+		8C60DBE81A2FD12A00770016 /* LeaderBoardsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C60DBE71A2FD12A00770016 /* LeaderBoardsViewController.m */; };
 		8CE36F311A2F9D26006650F5 /* ConnectFourAI.m in Sources */ = {isa = PBXBuildFile; fileRef = 8CE36F301A2F9D26006650F5 /* ConnectFourAI.m */; };
 /* End PBXBuildFile section */
 
@@ -99,6 +100,8 @@
 		8C331CDE1A2FCB4F00EA6345 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		8C331CDF1A2FCB4F00EA6345 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		8C331CE21A2FCB8E00EA6345 /* Social.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Social.framework; path = System/Library/Frameworks/Social.framework; sourceTree = SDKROOT; };
+		8C60DBE61A2FD12A00770016 /* LeaderBoardsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LeaderBoardsViewController.h; sourceTree = "<group>"; };
+		8C60DBE71A2FD12A00770016 /* LeaderBoardsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LeaderBoardsViewController.m; sourceTree = "<group>"; };
 		8CE36F2F1A2F9D26006650F5 /* ConnectFourAI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ConnectFourAI.h; sourceTree = "<group>"; };
 		8CE36F301A2F9D26006650F5 /* ConnectFourAI.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ConnectFourAI.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -196,6 +199,8 @@
 				8C3204FC1A16FBFA00273401 /* Images.xcassets */,
 				8C3204FE1A16FBFA00273401 /* LaunchScreen.xib */,
 				8C3204EF1A16FBFA00273401 /* Supporting Files */,
+				8C60DBE61A2FD12A00770016 /* LeaderBoardsViewController.h */,
+				8C60DBE71A2FD12A00770016 /* LeaderBoardsViewController.m */,
 			);
 			path = 7x6;
 			sourceTree = "<group>";
@@ -341,6 +346,7 @@
 				39A5A5DF1A2FAE2A0005F1C5 /* InstructionsViewController.m in Sources */,
 				8C3204F21A16FBFA00273401 /* main.m in Sources */,
 				8C1DD3EB1A1D1A1800B4B14D /* Board.m in Sources */,
+				8C60DBE81A2FD12A00770016 /* LeaderBoardsViewController.m in Sources */,
 				39A3342E1A26622D00070CF7 /* BoardView.m in Sources */,
 				8CE36F311A2F9D26006650F5 /* ConnectFourAI.m in Sources */,
 				8C331CD51A2FCA1500EA6345 /* MenuViewController.m in Sources */,
