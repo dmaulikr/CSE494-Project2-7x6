@@ -12,6 +12,8 @@
 @interface LeaderBoardsViewController ()
 @property (weak, nonatomic) IBOutlet UITextView *highScores;
 @property (weak, nonatomic) IBOutlet UITextView *winloss;
+@property (weak, nonatomic) IBOutlet UILabel *txtHighScore;
+@property (weak, nonatomic) IBOutlet UILabel *txtWinLoss;
 - (IBAction)BackButton:(id)sender;
 
 @end
@@ -23,8 +25,24 @@
     // Do any additional setup after loading the view.
     self.highScores.text = @"";
     self.winloss.text = @"";
+    
+   
+    
+    PFUser *user = [PFUser currentUser];
+    self.txtHighScore.text = [NSString stringWithFormat:@"Your High Score: %@", user[@"highestscore"]];
+    
+    int r = (int)[user[@"ratio"] integerValue];
+    
+    self.txtWinLoss.text = [NSString stringWithFormat:@"Win Percentage: %d", r];
+    
+    self.txtHighScore.numberOfLines = 0;
+    [[self txtHighScore] sizeToFit];
+    self.txtWinLoss.numberOfLines = 0;
+    [[self txtWinLoss] sizeToFit];
+    
     [self LoadHighScores];
     [self LoadWinLoss];
+    
     
 }
 
