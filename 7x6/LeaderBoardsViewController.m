@@ -48,7 +48,7 @@
                 
                 if(i <= 9)
                 {
-                    result = [NSString stringWithFormat:@"%@\n%d. %@ %@", result, (i+1), username, score];
+                    result = [NSString stringWithFormat:@"%@\n%d. Name: %@   Score: %@", result, (i+1), username, score];
                 }
                 
                 i++;
@@ -86,11 +86,12 @@
             {
                 NSString *username = object[@"username"];
                 NSString *ratio = object[@"ratio"];
+                int r = (int)[ratio integerValue];
                 
                 
                 if(i <= 9)
                 {
-                    result = [NSString stringWithFormat:@"%@\n%d. %@ %@", result, (i+1), username, ratio];
+                    result = [NSString stringWithFormat:@"%@\n%d. Name: %@  Ratio: %d", result, (i+1), username, r];
                 }
             
                 i++;
