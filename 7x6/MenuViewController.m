@@ -10,6 +10,7 @@
 
 @interface MenuViewController ()
 - (IBAction)LogOutButton:(id)sender;
+@property (weak, nonatomic) IBOutlet UILabel *txtName;
 
 @end
 
@@ -22,9 +23,12 @@
 
 - (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
-    
+    //self.txtName.text = @"";
     if (![PFUser currentUser]) { // No user logged in
         [self showLogInView];
+    }
+    else{
+        self.txtName.text = [PFUser currentUser][@"username"];
     }
 }
 
@@ -81,6 +85,7 @@
 // Sent to the delegate when a PFUser is logged in.
 - (void)logInViewController:(PFLogInViewController *)logInController didLogInUser:(PFUser *)user {
     
+    self.txtName.text = user[@"username"];
     [self dismissViewControllerAnimated:YES completion:NULL];
 }
 
@@ -128,6 +133,8 @@
     user[@"highestscore"] = @(0);
     user[@"ratio"] = @(0);
     [user save];
+    
+    self.txtName.text = user[@"username"];
     
     [self dismissViewControllerAnimated:YES completion:Nil]; // Dismiss the PFSignUpViewController
     
