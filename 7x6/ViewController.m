@@ -252,7 +252,6 @@ bool processingMove;
     
     int ratio = (wins/(wins+losses)*100.0);
     user[@"ratio"] = @(ratio);
-    NSLog(@"ratio: %f", ratio);
     
     //Save
     [user saveInBackground];
