@@ -59,7 +59,7 @@
 
 -(void)addLossPenalty
 {
-    self.score /= 10000/(10000-self.score);
+    self.score /= (10000.0/(10000.0-self.score))*2.5;
     if(self.score < 0)
     {
         self.score = 0;

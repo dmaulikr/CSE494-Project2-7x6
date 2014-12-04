@@ -126,6 +126,7 @@
     user[@"wins"] = @(0);
     user[@"losses"] = @(0);
     user[@"highestscore"] = @(0);
+    user[@"ratio"] = @(0);
     [user save];
     
     [self dismissViewControllerAnimated:YES completion:Nil]; // Dismiss the PFSignUpViewController

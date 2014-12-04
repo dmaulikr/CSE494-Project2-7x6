@@ -211,21 +211,50 @@ bool processingMove;
 
 -(void)endGameActionsWith:(NSString *)result AndWinner:(int)winner
 {
-    
+    //Get current user
     PFUser *user = [PFUser currentUser];
+    //If they won, increase their win total
     if(winner == 1)
     {
-        user[@"wins"] = @((int) user[@"wins"] + 1);
+        NSString *winsString = user[@"wins"];
+        int wins = winsString.intValue;
+        NSLog(@"Wins: %d", wins);
+        wins++;
+        user[@"wins"] = @(wins);
         [self.userScore addWinBonus];
         self.scoreLabel.text = [self.userScore getScore];
     }
+    //Or their loss total
     else if(winner == 2)
     {
-        user[@"losses"] = @((int) user[@"losses"] + 1);
+        NSString *lossesString = user[@"losses"];
+        int losses = lossesString.intValue;
+        NSLog(@"losses: %d", losses);
+        losses++;
+        user[@"losses"] = @(losses);
         [self.userScore addLossPenalty];
         self.scoreLabel.text = [self.userScore getScore];
     }
-    user[@"highscore"] = @(self.userScore.score);
+    //If their score is a new high score, store it
+    NSString *userHighString = user[@"highestscore"];
+    int userHigh = userHighString.intValue;
+    NSLog(@"HighScore: %d", userHigh);
+    if(self.userScore.score > userHigh)
+    {
+        user[@"highestscore"] = @(self.userScore.score);
+    }
+    
+    //Store their new win loss ratio
+    NSString *winsString = user[@"wins"];
+    int wins = winsString.intValue;
+    NSString *lossesString = user[@"losses"];
+    int losses = lossesString.intValue;
+    
+    int ratio = wins/(wins+losses)*100;
+    user[@"ratio"] = @(ratio);
+    
+    //Save
+    [user saveInBackground];
 
     
     UIAlertController * view=   [UIAlertController
